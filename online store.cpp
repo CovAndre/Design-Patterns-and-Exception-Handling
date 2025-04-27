@@ -9,7 +9,7 @@ const int MAX_PRODUCTS = 10;
 const int MAX_CART_ITEMS = 20;
 const int MAX_ORDERS = 50;
 
-/
+
 class Product {
 private:
     char id[10];
@@ -291,12 +291,13 @@ void viewOrders() {
 
 Product findProductById(const char* id) {
     for (int i = 0; i < productCount; i++) {
-        if (strcmp(products[i].getId(), id) == 0) {
+        if (strcasecmp(products[i].getId(), id) == 0) {
             return products[i];
         }
     }
     throw runtime_error("Product ID not found!");
 }
+
 
 void logOrder(int orderId, const char* paymentMethod) {
     ofstream logfile("log.txt", ios::app);
